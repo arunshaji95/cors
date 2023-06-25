@@ -1,1 +1,1 @@
-# cors
+# CORS
