@@ -1,0 +1,28 @@
+<html>
+    <head></head>
+    <body>
+        <h3>Message: </h3><div class="message"></div>
+    </body>
+    <script type="text/javascript">
+        function run() {
+            // Creating Our XMLHttpRequest object
+            let xhr = new XMLHttpRequest();
+
+            // Making our connection 
+            var url = 'http://localhost:8080';
+            xhr.open("GET", url, true);
+
+            // function execute after request is successful
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var jsonResponse = JSON.parse(this.responseText)
+                    console.log(jsonResponse);
+                    document.getElementsByClassName("message")[0].innerHTML = jsonResponse.message;
+                }
+            }
+            // Sending our request
+            xhr.send();
+        }
+    run();
+    </script>
+</html>
